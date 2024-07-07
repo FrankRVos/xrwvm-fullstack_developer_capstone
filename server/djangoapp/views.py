@@ -78,7 +78,7 @@ def registration(request):
         data = {"userName": username, "status": "Authenticated"}
         return JsonResponse(data)
     else:
-        data = {"userName": username,"error": "Already Registered"}
+        data = {"userName": username, "error": "Already Registered"}
         return JsonResponse(data)
 
 
@@ -98,9 +98,11 @@ def get_dealerships(request, state="All"):
 # ...
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
-def get_dealer_reviews(request, dealer_id):
-    # if dealer id has been provided
 
+def get_dealer_reviews(request, dealer_id):
+
+
+    # if dealer id has been provided
     if (dealer_id):
         endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
@@ -143,5 +145,5 @@ def get_cars(request):
     cars = []
     for car_model in car_models:
         cars.append({"CarModel": car_model.name,
-        "CarMake": car_model.car_make.name})
+                     "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
